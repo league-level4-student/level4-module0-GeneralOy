@@ -21,8 +21,8 @@ public class Cell implements Drawable{
 	//    It sets isAlive to true or false based on the neighbors and 
 	//the rules of the game*/
 	/*
-	 * 1. Any live cell with fewer than two live neighbors dies, as if caused by under-population.
-	 * 2. Any live cell with two or three live neighbors lives on to the next generation.
+	 * \/1. Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+	 * \/2. Any live cell with two or three live neighbors lives on to the next generation.
 	 * 3. Any live cell with more than three live neighbors dies, as if by over-population.
 	 * 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 	 * (source: Wikipedia)
@@ -30,6 +30,7 @@ public class Cell implements Drawable{
 	public void liveOrDie(int numNeighbors) {
 		if(numNeighbors < 2 || numNeighbors > 3) {
 			isAlive = false;
+			//System.out.println(numNeighbors + "isAlive;" + isAlive);
 		}else if(numNeighbors == 3 || (numNeighbors == 2 && isAlive)) {
 			isAlive = true;
 		}
@@ -48,7 +49,15 @@ public class Cell implements Drawable{
 	//    draws empty square if cell is dead*/
 	@Override
 	public void draw(Graphics g) {
-	
+		if(isAlive) {
+			g.setColor(Color.GREEN);
+			g.fillRect(x, y, cellSize, cellSize);
+		}else if(!isAlive) {
+			g.setColor(Color.WHITE);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+		g.setColor(Color.BLACK);
+		g.drawRect(x, y, cellSize, cellSize);
 		
 		
 		
