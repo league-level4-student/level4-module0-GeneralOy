@@ -105,10 +105,15 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		/** 7. iterate through cells and get their neighbors */// ??????????????????
 		for (int i = 0; i < cellsPerRow; i++) {
 			for (int j = 0; j < cellsPerRow; j++) {
-				if (cellArray[i][j].isAlive) {
+				//if (cellArray[i][j].isAlive) {
 					numNeighbors = getLivingNeighbors(i, j);
-					cellArray[i][j].liveOrDie(numNeighbors);
-				}
+					cellArray[i][j].neighbors = numNeighbors;
+				//}
+			}
+		}
+		for (int i = 0; i < cellsPerRow; i++) {
+			for (int j = 0; j < cellsPerRow; j++) {
+				cellArray[i][j].liveOrDie();
 			}
 		}
 
@@ -126,8 +131,12 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 				if ((x+i) >= 0 && (x+i) <= 49 && (y+j) <= 49 && (y+j) >= 0 && cellArray[x + i][y + j].isAlive) {
+					if(i == 0 && j == 0) {
+						
+					}else {
 					numNeighborsAlive++;
 					System.out.println(numNeighborsAlive);
+					}
 				}
 			}
 		}
@@ -153,8 +162,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		int i = (e.getX() - (e.getX() % cellsPerRow)) / cellsPerRow,
-				j = (e.getY() - (e.getY() % cellsPerRow)) / cellsPerRow;
+		int i = e.getX() / cellSize,
+				j = e.getY() / cellSize;
 		/**
 		 * 10. Use e.getX() and e.getY() to determine // which cell is clicked. Then
 		 * toggle // the isAlive variable for that cell.
