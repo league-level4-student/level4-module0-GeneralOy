@@ -33,10 +33,12 @@ public class Maze {
 		}
 	}
 	
-	/*4b. This method returns the selected cell.*/
+	/**4b. This method returns the selected cell.*/
 	public Cell getCell(int x, int y){
+		int cellX = x/(width/5);
+		int cellY = y/(height/5);
 		
-		return  null;
+		return  CellsArray[cellX][cellY];
 	}
 
 	public int getWidth() {

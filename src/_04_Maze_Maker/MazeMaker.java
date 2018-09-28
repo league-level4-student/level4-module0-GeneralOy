@@ -21,19 +21,20 @@ public class MazeMaker{
 		height = h;
 		maze = new Maze(width, height);
 		
-		/*4. select a random cell to start*/
+		/**4. select a random cell to start*/
+		int randX = randGen.nextInt(MazeDisplay.WIDTH);
+		int randY = randGen.nextInt(MazeDisplay.HEIGHT);
 		
-		
-		/*5. call selectNextPath method with the randomly selected cell*/
-		
+		/**5. call selectNextPath method with the randomly selected cell*/
+		maze.getCell(randX, randY);
 		
 		return maze;
 	}
 
 	/*6. Complete the selectNextPathMethod*/
 	private static void selectNextPath(Cell currentCell) {
-		/*A. mark cell as visited*/
-
+		/**A. mark cell as visited*/
+		currentCell.hasBeenVisited();
 		/*B. check for unvisited neighbors using the cell*/
 		
 		/*C. if has unvisited neighbors,*/
