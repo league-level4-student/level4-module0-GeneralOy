@@ -20,8 +20,8 @@ public class MazeMaker {
 		maze = new Maze(width, height);
 
 		/** 4. select a random cell to start */
-		int randX = randGen.nextInt(MazeDisplay.WIDTH);
-		int randY = randGen.nextInt(MazeDisplay.HEIGHT);
+		int randX = randGen.nextInt(width);
+		int randY = randGen.nextInt(height);
 
 		/** 5. call selectNextPath method with the randomly selected cell */
 		maze.getCell(randX, randY);
@@ -32,7 +32,8 @@ public class MazeMaker {
 	/* 6. Complete the selectNextPathMethod */
 	private static void selectNextPath(Cell currentCell) {
 		int[][] unvisitedNeighbors = new int[4][2];
-		int unvNeigh=0;
+		int unvNeigh = 0;
+		int tempX = randGen.nextInt(unvNeigh);
 		/** A. mark cell as visited */
 		currentCell.hasBeenVisited();
 		/** B. check for unvisited neighbors using the cell */
@@ -40,8 +41,9 @@ public class MazeMaker {
 			if ((currentCell.getX() + i) < 5 || (currentCell.getX() + i) > -1) {
 				for (int j = -1; j < 2; j++) {
 					if ((currentCell.getY() + j) < 5 || (currentCell.getY() + j) > -1) {
-						if ((j == 0 && i == 0) || (j == -1 && i == -1) || (j == 1 && i == 1) || (j == -1 && i == 1) || (j == -1 && i == 1)) {
-							
+						if ((j == 0 && i == 0) || (j == -1 && i == -1) || (j == 1 && i == 1) || (j == -1 && i == 1)
+								|| (j == -1 && i == 1)) {
+
 						} else {
 							unvisitedNeighbors[unvNeigh][1] = currentCell.getX() + i;
 							unvisitedNeighbors[unvNeigh][2] = currentCell.getY() + j;
@@ -52,35 +54,42 @@ public class MazeMaker {
 			}
 		}
 		/** C. if has unvisited neighbors, */
-		if(unvNeigh != 0) {
-			int tempX = randGen.nextInt(unvNeigh);
+		if (unvNeigh != 0) {
+			
 			uncheckedCells.push(maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]));
-			if() {
-				
-			} else if() {
-				
-			} else if() {
-				
-			} else if() {
-				
+			Cell tempCell = maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]);
+			if (tempCell.getY() > currentCell.getY()) {
+				//uncheckedCells.pop().setNorthWall(false);
+				maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]).setSouthWall(false);
+			} else if (tempCell.getX() > currentCell.getX()) {
+				//uncheckedCells.pop().setEastWall(false);
+				maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]).setEastWall(false);
+			} else if (tempCell.getY() < currentCell.getX()) {
+				//uncheckedCells.pop().setSouthWall(false);
+				maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]).setWestWall(false);
+			} else if (tempCell.getX() < currentCell.getY()) {
+				//uncheckedCells.pop().setWestWall(false);
+				maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]).setNorthWall(false);
 			}
+			
 		}
+		selectNextPath(maze.getCell(unvisitedNeighbors[tempX][1], unvisitedNeighbors[tempX][2]));
 		/** C1. select one at random. */
 
 		/** C2. push it to the stack */
-
-		/* C3. remove the wall between the two cells */
-
+		
+		/** C3. remove the wall between the two cells */
+		
 		/* C4. make the new cell the current cell and mark it as visited */
-
+		
 		/* D. if all neighbors are visited */
-
+		
 		/* D1. if the stack is not empty */
-
+		
 		/* D1a. pop a cell from the stack */
-
+		
 		/* D1b. make that the current cell */
-
+		
 	}
 
 	/*

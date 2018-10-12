@@ -20,18 +20,19 @@ public class MazeDisplay extends JPanel{
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		
 		window = new JFrame();
-		
+		maze = MazeMaker.generateMaze(5, 5);
 		window.add(this);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		window.pack();
 		
-		maze = MazeMaker.generateMaze(5, 5);
+		
 		repaint();
 	}
 	
 	@Override
 	public void paintComponent(Graphics g){
+		//System.out.println(maze);
 		maze.draw(g);
 	}
 	
