@@ -35,8 +35,8 @@ public class Maze {
 	
 	/**4b. This method returns the selected cell.*/
 	public Cell getCell(int x, int y){
-		int cellX = x/(width/5);
-		int cellY = y/(height/5);
+		int cellX = x/(800/5);
+		int cellY = y/(800/5);
 		
 		return  CellsArray[cellX][cellY];
 	}
