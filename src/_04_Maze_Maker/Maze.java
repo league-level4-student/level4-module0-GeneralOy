@@ -31,7 +31,7 @@ public class Maze {
 	public void draw(Graphics g) {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				if (CellsArray[i][j].hasEastWall() == true) {
+				/*if (CellsArray[i][j].hasEastWall() == true) {
 					g.drawLine(i * (MazeDisplay.WIDTH / width), j * (MazeDisplay.HEIGHT / height),
 							i * (MazeDisplay.WIDTH / width),
 							j * (MazeDisplay.HEIGHT / height) + MazeDisplay.HEIGHT / height);
@@ -60,7 +60,10 @@ public class Maze {
 							j * (MazeDisplay.HEIGHT / height));
 				} else {
 					System.out.println("noNwall");
-				}
+				}/**/
+				CellsArray[i][j].draw(g);/**/
+				//System.out.println("This happened --------------------------------------------");
+				//checkWalls(i,j);
 				/*g.drawRect(i * (MazeDisplay.WIDTH / width), j * (MazeDisplay.HEIGHT / height),
 						MazeDisplay.WIDTH / width, MazeDisplay.HEIGHT / height);*/
 
@@ -82,5 +85,16 @@ public class Maze {
 
 	public int getHeight() {
 		return height;
+	}
+	public void checkWalls(int i, int j) {
+		boolean N = CellsArray[i][j].hasNorthWall();
+		boolean E = CellsArray[i][j].hasEastWall();
+		boolean W = CellsArray[i][j].hasWestWall();
+		boolean S = CellsArray[i][j].hasSouthWall();
+		System.out.println("Cell at (" + i + ", " + j + ") has;");
+		System.out.println("North; " + N);
+		System.out.println("East; " + E);
+		System.out.println("West; " + W);
+		System.out.println("South; " + S);
 	}
 }

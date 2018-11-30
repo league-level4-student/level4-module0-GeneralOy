@@ -3,13 +3,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Cell {
-	public static final int X_MARGIN = 100;
-	public static final int Y_MARGIN = 100;
+	public static final int X_MARGIN = /*10/**/0;
+	public static final int Y_MARGIN = /*10/**/0;
 	
 	private int x;
 	private int y;
 	
-	private int size = 100;
+	private int size = 800/5;
 	
 	private boolean visited;
 	
