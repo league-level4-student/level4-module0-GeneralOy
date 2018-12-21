@@ -33,12 +33,13 @@ public class MazeMaker {
 	private static void selectNextPath(Cell currentCell) {
 		////////////////int[][] unvisitedNeighbors;
 		Cell[] unvisitedNeigh;
-
+		int tempX;
 		int unvNeigh;
 		for (int f = 0; f < 25; f++) {
-			///////////////unvisitedNeighbors = new int[5][2];
-			unvisitedNeigh = new Cell[5];
 			unvNeigh = 0;
+			//unvisitedNeighbors = new int[5][2];
+			unvisitedNeigh = new Cell[5];
+			
 			/** A. mark cell as visited */
 			currentCell.hasBeenVisited();
 			/** B. check for unvisited neighbors using the cell */
@@ -51,11 +52,12 @@ public class MazeMaker {
 							if ((j == 0 && i == 0) || (j == -1 && i == -1) || (j == 1 && i == 1) || (j == -1 && i == 1)
 									|| (j == -1 && i == 1)) {
 								System.out.println("missed()()(()()())()()()()())())");
-							} else {
-								//////////////////unvisitedNeighbors[unvNeigh][0] = currentCell.getX() + i;
-								//////////////////unvisitedNeighbors[unvNeigh][1] = currentCell.getY() + j;
+							} else if((j == 0 && i == 1) || (j == 0 && i == -1) || (j == 1 && i == 0) || (j == -1 && i == 0)){
+								//unvisitedNeighbors[unvNeigh][0] = currentCell.getX() + i;
+								//unvisitedNeighbors[unvNeigh][1] = currentCell.getY() + j;
 								unvisitedNeigh[unvNeigh] = maze.getCell(currentCell.getX() + i, currentCell.getY() + j);
 								unvNeigh++;
+								System.out.println(unvNeigh + "+++ UNV NEIGH");
 								// System.out.println(unvisitedNeighbors[unvNeigh][0]
 								// + ", " + unvisitedNeighbors[unvNeigh][1]);
 								//for (int u = 0; u < unvNeigh; u++) {
@@ -70,20 +72,25 @@ public class MazeMaker {
 				}
 			}
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			int tempX = randGen.nextInt(unvNeigh);
+			tempX = randGen.nextInt(unvNeigh);
 			if (unvNeigh > 0) {
+				System.out.println(unvNeigh + "+++++ UNV NEIGH");
 				if(unvNeigh-tempX >= 0) {
+					System.out.println(tempX);
 				uncheckedCells.push(unvisitedNeigh[tempX]);
+				}/*else {
+					System.out.println("this aint it");
+				}/**/
 				}
-				}
-				System.out.println(uncheckedCells);
-				System.out.println(tempX);
-				System.out.println(unvisitedNeigh + "////////////////////////////////////////////////////////////////////////////");
+				//System.out.println(uncheckedCells);
+				//System.out.println(tempX);
 				Cell tempCell = unvisitedNeigh[tempX];
-				System.out.println("temp;" + tempCell + "   current;" + currentCell);
+				System.out.println("cells;" + currentCell + " - " + tempCell + " - " + unvisitedNeigh[tempX]);
+				//System.out.println("temp;" + tempCell + "   current;" + currentCell);
 				if (tempCell == currentCell) {
 					System.out.println("Nope-------------------------------------------------------------------Nope");
 				} else {
+					System.out.println("yup-------------------------------------------------------------------yup");
 					removeWalls(tempCell, currentCell);
 				}
 				currentCell.hasBeenVisited();
