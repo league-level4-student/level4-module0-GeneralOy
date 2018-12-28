@@ -31,41 +31,8 @@ public class Maze {
 	public void draw(Graphics g) {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				/*if (CellsArray[i][j].hasEastWall() == true) {
-					g.drawLine(i * (MazeDisplay.WIDTH / width), j * (MazeDisplay.HEIGHT / height),
-							i * (MazeDisplay.WIDTH / width),
-							j * (MazeDisplay.HEIGHT / height) + MazeDisplay.HEIGHT / height);
-				} else {
-					System.out.println("noEwall");
-				}
-				if (CellsArray[i][j].hasWestWall() == true) {
-					g.drawLine(i * (MazeDisplay.WIDTH / width) + MazeDisplay.WIDTH / width,
-							j * (MazeDisplay.HEIGHT / height),
-							i * (MazeDisplay.WIDTH / width) + MazeDisplay.WIDTH / width,
-							j * (MazeDisplay.HEIGHT / height) + MazeDisplay.HEIGHT / height);
-				} else {
-					System.out.println("noWwall");
-				}
-				if (CellsArray[i][j].hasSouthWall() == true) {
-					g.drawLine(i * (MazeDisplay.WIDTH / width),
-							j * (MazeDisplay.HEIGHT / height) + MazeDisplay.HEIGHT / height,
-							i * (MazeDisplay.WIDTH / width) + MazeDisplay.WIDTH / width,
-							j * (MazeDisplay.HEIGHT / height) + MazeDisplay.HEIGHT / height);
-				} else {
-					System.out.println("noSwall");
-				}
-				if (CellsArray[i][j].hasNorthWall() == true) {
-					g.drawLine(i * (MazeDisplay.WIDTH / width), j * (MazeDisplay.HEIGHT / height),
-							i * (MazeDisplay.WIDTH / width) + MazeDisplay.WIDTH / width,
-							j * (MazeDisplay.HEIGHT / height));
-				} else {
-					System.out.println("noNwall");
-				}/**/
 				CellsArray[i][j].draw(g);/**/
-				//System.out.println("This happened --------------------------------------------");
-				//checkWalls(i,j);
-				/*g.drawRect(i * (MazeDisplay.WIDTH / width), j * (MazeDisplay.HEIGHT / height),
-						MazeDisplay.WIDTH / width, MazeDisplay.HEIGHT / height);*/
+				//System.out.println(CellsArray[i][j]);
 
 			}
 		}
@@ -73,9 +40,9 @@ public class Maze {
 
 	/** 4b. This method returns the selected cell. */
 	public Cell getCell(int x, int y) {
-		int cellX = x / (800 / 5);
-		int cellY = y / (800 / 5);
-
+		int cellX = (x -(x%160)/ 160);
+		
+		int cellY = (y -(x%160)/ 160);
 		return CellsArray[cellX][cellY];
 	}
 
