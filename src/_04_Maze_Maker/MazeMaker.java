@@ -91,7 +91,6 @@ public class MazeMaker {
 			/** D1a. pop a cell from the stack */
 
 			/** D1b. make that the current cell */
-
 		}else if (unvNeigh == 0 && uncheckedCells.empty() == false) {
 			currentCell = uncheckedCells.pop();
 			
