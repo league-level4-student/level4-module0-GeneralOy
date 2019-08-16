@@ -13,10 +13,10 @@ public class _00_2DArrayDemo {
 		
 		// If the value of the arrays is not known at the time the array
 		// is created, you can define the size of the array like this:
-		int[][] anotherArray2d = new int[5][5];
+		int[][] anotherArray2d = new int[5][4];
 		// anotherArray2d is an array of 5 integer arrays, with each  
 		// integer array containing 5 integers. 
-		
+		System.out.println(anotherArray2d.length + " ");
 		// Accessing elements of the 2D array works the same as a 1D array
 		anotherArray2d[0][1] = 4;
 		System.out.println(anotherArray2d[0][1]);
